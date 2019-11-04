@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>一道简单的面试题</title>
+    <link href="undefined2019/10/16/%E4%B8%80%E9%81%93%E7%AE%80%E5%8D%95%E7%9A%84%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    <url>2019/10/16/%E4%B8%80%E9%81%93%E7%AE%80%E5%8D%95%E7%9A%84%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>请问下面程序输出是什么</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class Jtest&#123;</span><br><span class="line">      public static void main(String[] args) &#123;</span><br><span class="line">            StringBuffer a=new StringBuffer (&quot;A&quot;); </span><br><span class="line">            StringBuffer b=new StringBuffer (&quot;B&quot;);</span><br><span class="line">            oper(a,b);</span><br><span class="line">            System.out.print(a+&quot;,&quot;+b);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">      static void oper(StringBuffer c,StringBuffer d)&#123;</span><br><span class="line">          c.append(&quot;B&quot;);   </span><br><span class="line">          d=c;</span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>答案：AB,B</p><h1 id="图解"><a href="#图解" class="headerlink" title="图解"></a>图解</h1><p><img src="/image/void.png" srcset="/img/loading.gif" alt="图解"></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>自我控制是最强者的本能</title>
+    <link href="undefined2019/10/07/%E8%87%AA%E6%88%91%E6%8E%A7%E5%88%B6%E6%98%AF%E6%9C%80%E5%BC%BA%E8%80%85%E7%9A%84%E6%9C%AC%E8%83%BD/"/>
+    <url>2019/10/07/%E8%87%AA%E6%88%91%E6%8E%A7%E5%88%B6%E6%98%AF%E6%9C%80%E5%BC%BA%E8%80%85%E7%9A%84%E6%9C%AC%E8%83%BD/</url>
+    
+    <content type="html"><![CDATA[<h1 id="自我控制是最强者的本能"><a href="#自我控制是最强者的本能" class="headerlink" title="自我控制是最强者的本能"></a>自我控制是最强者的本能</h1><h2 id="乐观向上"><a href="#乐观向上" class="headerlink" title="乐观向上"></a>乐观向上</h2><p>我是一只快乐的程序员，不管有多忙总会挤出时间做自己喜欢做的事。不抛弃，不放弃。</p><p>天赋，规定的是上限。</p><p>有梦想的人是幸福的，而为了梦想去努力，虽然没有达到却永远无怨无悔。<br><img src="/image/ai.jpg" srcset="/img/loading.gif" alt="这就是我"></p><h2 id="言出必行"><a href="#言出必行" class="headerlink" title="言出必行"></a>言出必行</h2><p>光知道是不够的，我们必须应用；光有愿望是不够的，我们还得做。<br><img src="/image/BruceLee.jpg" srcset="/img/loading.gif" alt="Bruce Lee"></p><h2 id="行成于思毁于随"><a href="#行成于思毁于随" class="headerlink" title="行成于思毁于随"></a>行成于思毁于随</h2><p>不能光知道”业精于勤荒于嬉“，思考也很重要。</p><p>比尔 盖茨：一个卓越的车床工可以要求比一个一般的车床工多拿数倍高的工资，但一个卓越的软件写手的价值会10000倍于一个普通的写手。</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>我的第一篇博客</title>
+    <link href="undefined2019/10/04/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
+    <url>2019/10/04/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
+    
+    <content type="html"><![CDATA[<h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><p>内容，齐天大圣</p><hr><h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2><p>天的那边海的那边有一只小菜鸟</p><hr><p>参考文献</p><p><a href="http://www.guaidonggua.github.io" target="_blank" rel="noopener">www.guaidonggua.github.io</a></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="undefined2019/10/04/hello-world/"/>
+    <url>2019/10/04/hello-world/</url>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  
+</search>
