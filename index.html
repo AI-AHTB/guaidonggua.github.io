@@ -53,32 +53,42 @@
         
           
           
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
           <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
+            <a class="nav-link" href="/">首页</a>
           </li>
         
           
           
           <li class="nav-item">
-            <a class="nav-link" href="/archives/">Archives</a>
+            <a class="nav-link" href="/archives/">归档</a>
           </li>
         
           
           
           <li class="nav-item">
-            <a class="nav-link" href="/categories/">Categories</a>
+            <a class="nav-link" href="/categories/">分类</a>
           </li>
         
           
           
           <li class="nav-item">
-            <a class="nav-link" href="/tags/">Tags</a>
+            <a class="nav-link" href="/tags/">标签</a>
           </li>
         
           
           
           <li class="nav-item">
-            <a class="nav-link" href="/about/">About</a>
+            <a class="nav-link" href="/about/">关于</a>
           </li>
         
         
@@ -288,6 +298,53 @@
           <i class="iconfont icon-tag"></i>
           
             <a href="/tags/%E5%85%B6%E5%AE%83">其它</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2019/01/09/微信公众号支付/" target="_self">
+          <img src="/image/sl_wxzf.jpg" srcset="/img/loading.gif" alt="微信公众号支付" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/01/09/微信公众号支付/">
+        <p class="h4 index-header">微信公众号支付</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">历经三天的爬坑之路，一套完整的 JAVA 版 JSAPI 微信支付和大家分享。
+首先看官方文档，其中虽有一点点小差错，但还是很重要，毕竟它是根。https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=1_1
+准备工作公众号配置和申请商户申请省略，直接上功能
+一、首先下载官方提供的工具类demo
+二、把这些工具类Copy到自己的项目中
+
+流程 统一下单 —》 H5调起微信支付 —》 回调参数 场景案例：充值话费流量
+场景介绍：    1）点击套餐时，统一下单；    2）下单完成后返回参数给H5页面做为调用微信支付页面的数据；    3）然后跳转到你的微信支付界面(输入密码界面)；    4）输入密码支付成功；    5）回调信息用做通知。
+一、前台// 跳转微信支付(单击套餐时)
+onBridgeReady() {
+    // 【1】首先调用后台，统一下单 【对应后台下单方法，在后文有定义】
+    this.util.postRequest(&apos;/wx/unifiedOrder&apos;,{}).then(resp</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-01-09&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E5%BE%AE%E4%BF%A1">微信</a>&nbsp;
           
         
       </div>

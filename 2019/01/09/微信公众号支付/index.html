@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content>
+  <meta name="author" content="怪東瓜">
+  <meta name="keywords" content>
+  <title>微信公众号支付 | GuaiDongGua · 怪東瓜</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css">
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css">
+
+
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>GuaiDongGua · 怪東瓜</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">首页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/banner_01.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  Wednesday, January 9th 2019, 11:19 pm
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    1.9k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      8 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <p>历经三天的爬坑之路，一套完整的 JAVA 版 JSAPI 微信支付和大家分享。</p>
+<p>首先看官方文档，其中虽有一点点小差错，但还是很重要，毕竟它是根。<br><a href="https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=1_1" target="_blank" rel="noopener">https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=1_1</a></p>
+<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><p>公众号配置和申请商户申请省略，直接上功能</p>
+<h2 id="一、首先下载官方提供的工具类demo"><a href="#一、首先下载官方提供的工具类demo" class="headerlink" title="一、首先下载官方提供的工具类demo"></a>一、首先下载官方提供的工具类demo</h2><p><img src="/image/20190109/a_01.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h2 id="二、把这些工具类Copy到自己的项目中"><a href="#二、把这些工具类Copy到自己的项目中" class="headerlink" title="二、把这些工具类Copy到自己的项目中"></a>二、把这些工具类Copy到自己的项目中</h2><p><img src="/image/20190109/a_02.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<p><img src="/image/20190109/a_03.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h1 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h1><p> 统一下单 —》 H5调起微信支付 —》 回调参数<br> 场景案例：充值话费流量</p>
+<p><img src="/image/20190109/a_04.png" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>场景介绍：<br>    1）点击套餐时，统一下单；<br>    2）下单完成后返回参数给H5页面做为调用微信支付页面的数据；<br>    3）然后跳转到你的微信支付界面(输入密码界面)；<br>    4）输入密码支付成功；<br>    5）回调信息用做通知。</p>
+<h1 id="一、前台"><a href="#一、前台" class="headerlink" title="一、前台"></a>一、前台</h1><pre><code>// 跳转微信支付(单击套餐时)
+onBridgeReady() {
+    // 【1】首先调用后台，统一下单 【对应后台下单方法，在后文有定义】
+    this.util.postRequest(&apos;/wx/unifiedOrder&apos;,{}).then(response =&gt; {
+        // 返回信息
+        let data = response.data.result;
+        // 【2】如果下单成功
+        if(data.return_code === &apos;SUCCESS&apos;) {
+            // 调起支付(此处是自定义工具中封装)
+            this.util.onBridgeReady(data);
+        }
+    });
+}
+
+/**
+  * 调用微信支付(工具js中)
+  */
+ static onBridgeReady(params) {
+   // 判断对象是否存在
+   if (typeof WeixinJSBridge == &quot;undefined&quot;){
+     if( document.addEventListener ){
+       document.addEventListener(&apos;WeixinJSBridgeReady&apos;, onBridgeReady, false);
+     }else if (document.attachEvent){
+       document.attachEvent(&apos;WeixinJSBridgeReady&apos;, onBridgeReady); 
+       document.attachEvent(&apos;onWeixinJSBridgeReady&apos;, onBridgeReady);
+     }
+   }else{
+     // 【主要功能】在微信手机端浏览器 
+     // 下单时返回的数据，传入后台用做支付使用
+     var param = { &quot;appId&quot;:params.appid, &quot;package&quot;:&quot;prepay_id=&quot;+params.prepay_id };
+     // 【1】ajax调用后台，使参数添加完整 【对应后台方法后文有定义】
+     this.postRequest(&quot;/wx/goH5Pay&quot;, param).then(response =&gt; {
+       // 整理完的参数
+       let data = response.data.result;
+       // 【2】参数传入，微信中H5页面调起支付
+       WeixinJSBridge.invoke(
+         &apos;getBrandWCPayRequest&apos;, {
+             &quot;appId&quot;: data.appId, // 公众号名称，由商户传入     
+             &quot;timeStamp&quot;: data.timeStamp, // 时间戳，自1970年以来的秒数 (10位) 
+             &quot;nonceStr&quot;: data.nonceStr, // 随机串     
+             &quot;package&quot;: data.package, // 统一下单接口返回的prepay_id参数值，提交格式如prepay_id=***  
+             &quot;signType&quot;: data.signType, // 微信签名方式类型
+             &quot;paySign&quot;: data.paySign, //微信签名 
+         },
+         res =&gt; {
+           if(res.err_msg == &quot;get_brand_wcpay_request:ok&quot; ){
+               //使用以上方式判断前端返回,微信团队郑重提示：
+             //res.err_msg将在用户支付成功后返回ok，但并不保证它绝对可靠。
+             // 如果成功跳转微信支付页面
+         } 
+       });
+     });
+   }
+ }</code></pre><h1 id="二、后台"><a href="#二、后台" class="headerlink" title="二、后台"></a>二、后台</h1><h2 id="1-统一下单"><a href="#1-统一下单" class="headerlink" title="1.统一下单"></a>1.统一下单</h2><h4 id="（1）配置-MyConfig-继承工具抽象类-WXPayConfig"><a href="#（1）配置-MyConfig-继承工具抽象类-WXPayConfig" class="headerlink" title="（1）配置 MyConfig 继承工具抽象类 WXPayConfig"></a>（1）配置 MyConfig 继承工具抽象类 WXPayConfig</h4><pre><code>package com.mesunday.util.pay;
+import java.io.*;
+
+/**
+ * 自定义配置
+ */
+public class MyConfig extends WXPayConfig{
+    private byte[] certData;
+
+    /**
+     * 构造方法读取证书, 通过getCertStream 可以使sdk获取到证书
+     * @throws Exception
+     */
+    public MyConfig() throws Exception {
+            // 【必填】此处为你申请的证书存放的路径
+        String certPath = &quot;D:\\cert\\apiclient_cert.p12&quot;;  
+        File file = new File(certPath);
+        InputStream certStream = new FileInputStream(file);
+        this.certData = new byte[(int) file.length()];
+        certStream.read(this.certData);
+        certStream.close();
+    }
+    // 【必填】个人公众号的appid (此处为假数据)
+    public String getAppID() { return &quot;wx81107deaedd12&quot;; }
+
+    // 【必填】个人申请的商户号 (此处为假数据)
+    public String getMchID() { return &quot;1536399165&quot;; }
+
+    // 【必填】个人商户的API密钥 (此处为假数据)
+    public String getKey() { return &quot;c439h20196b286876b769fd196b2190k&quot;; }
+
+    public InputStream getCertStream() {
+        ByteArrayInputStream certBis = new ByteArrayInputStream(this.certData);
+        return certBis;
+    }
+
+    public int getHttpConnectTimeoutMs() {
+        return 8000;
+    }
+
+    public int getHttpReadTimeoutMs() {
+        return 10000;
+    }
+
+    /**
+     * 【必須實現此方法,否則無法使用】
+     * @return
+     */
+    public IWXPayDomain getWXPayDomain() {
+        IWXPayDomain iwxPayDomain = new IWXPayDomain() {
+            @Override
+            public void report(String domain, long elapsedTimeMillis, Exception ex) {}
+
+            @Override
+            public DomainInfo getDomain(WXPayConfig config) {
+                return new IWXPayDomain.DomainInfo(WXPayConstants.DOMAIN_API, true);
+            }
+        };
+        return iwxPayDomain;
+    }
+}</code></pre><h4 id="2-统一下单"><a href="#2-统一下单" class="headerlink" title="(2)统一下单"></a>(2)统一下单</h4><pre><code>/**
+  * 【统一下单】(正是前台调用的统一下单接口）
+  * controller省略，此处是service
+  * @return
+  */
+ public Map unifiedOrder() throws Exception {
+     // 返回信息给前台
+     Map&lt;String, String&gt; resp = new DataRow&lt;&gt;();
+
+     // 自定义的配置用于实现
+     MyConfig myConfig = new MyConfig();
+     WXPay wxpay = new WXPay(myConfig);
+     // 商戶訂單號
+     String outTradeNo = WXPayUtil.generateNonceStr();
+
+     // 添加 map data 数据，对应官方请求参数列表
+     // 官方：https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_1
+     DataRow&lt;String, String&gt; mapData = new DataRow();
+     mapData.put(&quot;appid&quot;, projectprops.getAppid()); // 公众APPid
+     mapData.put(&quot;mch_id&quot;, &quot;1536399165&quot;); // 商户号
+     mapData.put(&quot;nonce_str&quot;, WXPayUtil.generateNonceStr()); // 随机字符串32位(工具方法)
+     mapData.put(&quot;body&quot;,&quot;话费流量支付&quot;); // 商品描述
+     mapData.put(&quot;out_trade_no&quot;, outTradeNo); // 商户订单号
+     mapData.put(&quot;total_fee&quot;,&quot;1&quot;); // 标价金额(單位分)
+     mapData.put(&quot;spbill_create_ip&quot;,&quot;120.56.220.18&quot;); // 终端IP，公众平台白名单
+     mapData.put(&quot;notify_url&quot;, &quot;http://&quot; + projectprops.getDomainurl() + &quot;/api/wx/dealOrder/&quot;+outTradeNo); // 通知地址，支付成功时回调的参数(外网可以访问)，这里把订单号传过去
+     mapData.put(&quot;trade_type&quot;,&quot;JSAPI&quot;); // 交易类型
+     mapData.put(&quot;openid&quot;, &quot;ouAmpjl9ZZdSiMNYazgz7Ah8zqw4&quot;); // openid【必填，官方未说明必填】
+     // 签名需要其它数据信息，最后设置
+     String sign = WXPayUtil.generateSignature(mapData, &quot;c439h20196b286876b769fd196b2190k&quot;);
+     mapData.put(&quot;sign&quot;, sign); // 签名
+     // 调用统一下单
+     try {
+         resp = wxpay.unifiedOrder(mapData);
+         System.out.println(resp);
+     } catch (Exception e) {
+         e.printStackTrace();
+     }
+     return resp;
+ }</code></pre><p>下单成功后返回的信息，前台取到需要的参数<img src="/image/20190109/a_05.png" srcset="/img/loading.gif" alt="下单成功返回数据"></p>
+<h2 id="2-H5调用微信端支付"><a href="#2-H5调用微信端支付" class="headerlink" title="2.H5调用微信端支付"></a>2.H5调用微信端支付</h2><p>其中参数犹为重要，所以这里在后台生成，同时参考官方参数列表<br><a href="https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=7_7&amp;index=6" target="_blank" rel="noopener">https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=7_7&amp;index=6</a></p>
+<pre><code>/**
+ * H5支付时需要的参数
+ * @return
+ * @throws Exception
+ */
+public DataRow goH5Pay(DataRow data) throws Exception {
+    DataRow&lt;String, String&gt; param = new DataRow();
+    param.put(&quot;appId&quot;, data.getString(&quot;appId&quot;)); // 公众号名称，这里是由前台传过来
+    param.put(&quot;nonceStr&quot;, WXPayUtil.generateNonceStr()); // 随机串(工具生成)
+    param.put(&quot;package&quot;, data.getString(&quot;package&quot;)); // 统一下单返回的prepay_id，注意官方格式，这里也是由前台传过来
+    param.put(&quot;signType&quot;, &quot;MD5&quot;); // 微信签名方式
+    param.put(&quot;timeStamp&quot;, String.valueOf(WXPayUtil.getCurrentTimestamp())); // 时间戳，单位秒(10位)
+    // 签名需要其它数据信息，最后设置
+    String sign = WXPayUtil.generateSignature(param, &quot;c439h20196b286876b769fd196b2190k&quot;);
+    param.put(&quot;paySign&quot;, sign); // 签名
+    // 输出参数示例
+    for(Map.Entry&lt;String,String&gt; p : param.entrySet()) {
+        System.out.println(p.getKey() + &quot; : &quot; + p.getValue());
+    }
+
+    return param;
+}</code></pre><p><img src="/image/20190109/a_06.png" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>在添加参数后调用微信支付，如果正常跳到微信支付，则跳过此处。<br>如果有异常，不能跳转微信支付页面，即官方给的返回为，前台可以用 alert() 输出JSON格式查看错误信息<br>get_brand_wcpay_request:fail —— 支付失败</p>
+<h5 id="异常两种情况：如下"><a href="#异常两种情况：如下" class="headerlink" title="异常两种情况：如下"></a>异常两种情况：如下</h5><p><img src="/image/20190109/a_07.png" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>出现图 a：<br>（1）首先对照自己参数是否真的有问题，主要是签名，使用微信平台测试工具<br>         <a href="https://pay.weixin.qq.com/wiki/tools/signverify/" target="_blank" rel="noopener">https://pay.weixin.qq.com/wiki/tools/signverify/</a><br>（2）自己生成的签名和官方的明明一样，还是报签名错误，此时做以下修改工具代码<br><img src="/image/20190109/a_08.png" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>出现图b：<br>是商户平台上，你当前的H5页面的URL支付目录未授权，所以配置，如下图<br><img src="/image/20190109/a_09.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h2 id="如果微信跳转成功如下"><a href="#如果微信跳转成功如下" class="headerlink" title="如果微信跳转成功如下"></a>如果微信跳转成功如下</h2><p><img src="/image/20190109/a_10.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h2 id="3-支付完成会通知，下单时设置的通知路由"><a href="#3-支付完成会通知，下单时设置的通知路由" class="headerlink" title="3.支付完成会通知，下单时设置的通知路由"></a>3.支付完成会通知，下单时设置的通知路由</h2><p>这里通知路由查询订单，如下</p>
+<pre><code>/**
+  * 支付成功回調,查询订单信息
+  * @param outTradeNo 商戶訂單號【下单时传入的订单号】
+  * @return
+  */
+ @RequestMapping(value = &quot;/dealOrder/{outTradeNo:.+}&quot;)
+ @ResponseBody
+ public String goH5Pay(@PathVariable String outTradeNo) {
+     logger.debug(&quot;支付处理&quot;);
+     try {
+         // 自定义配置
+         MyConfig myConfig = new MyConfig();
+         WXPay wxpay = new WXPay(myConfig);
+
+         // 加入商戶訂單號
+         Map&lt;String, String&gt; data = new HashMap();
+         data.put(&quot;out_trade_no&quot;, outTradeNo);
+         // 查詢訂單
+         Map&lt;String, String&gt; resp = wxpay.orderQuery(data);
+
+         // 控制台输出，查看数据，如下图【【结合官方文档查看参数含义】】
+         for(Map.Entry&lt;String,String&gt; p : resp.entrySet()) {
+             System.out.println(p.getKey() + &quot; : &quot; + p.getValue());
+         }
+     } catch (Exception e) {
+
+     }
+     return ResultUtil.resultJsonString(&quot;null&quot;);
+ }</code></pre><p><img src="/image/20190109/a_11.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h2 id="其它方法退款查询、下账单查询，与上图账单查询道理相同"><a href="#其它方法退款查询、下账单查询，与上图账单查询道理相同" class="headerlink" title="其它方法退款查询、下账单查询，与上图账单查询道理相同"></a>其它方法退款查询、下账单查询，与上图账单查询道理相同</h2><p>至此，微信支付完成，如有不对之处，希望读者评论提醒</p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/%E5%BE%AE%E4%BF%A1">微信</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "微信公众号支付&nbsp;",
+      ],
+      cursorChar: "|",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>
