@@ -84,6 +84,44 @@
   
   
   <entry>
+    <title>Vue 网页生成 PDF</title>
+    <link href="undefined2019/04/20/Vue-%E7%BD%91%E9%A1%B5%E7%94%9F%E6%88%90-PDF/"/>
+    <url>2019/04/20/Vue-%E7%BD%91%E9%A1%B5%E7%94%9F%E6%88%90-PDF/</url>
+    
+    <content type="html"><![CDATA[<h1 id="保存当前网页为PDF格式到本地"><a href="#保存当前网页为PDF格式到本地" class="headerlink" title="保存当前网页为PDF格式到本地"></a>保存当前网页为PDF格式到本地</h1><h1 id="一、安装依赖"><a href="#一、安装依赖" class="headerlink" title="一、安装依赖"></a>一、安装依赖</h1><pre><code>1. npm install --save html2canvas  // 作用是html转图片2. npm install jspdf --save  // 再将图片转为pdf</code></pre><p><img src="http://guaidonggua.cn/blog/image/20190420/b_01.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p><h1 id="二、设置格式函数"><a href="#二、设置格式函数" class="headerlink" title="二、设置格式函数"></a>二、设置格式函数</h1><pre><code>import html2Canvas from &apos;html2canvas&apos;import JsPDF from &apos;jspdf&apos;export default{  install (Vue, options) {    Vue.prototype.getPdf = function (title) {      html2Canvas(document.querySelector(&apos;#pdfDom&apos;), {        allowTaint: true      }).then(function (canvas) {        let contentWidth = canvas.width        let contentHeight = canvas.height        let pageHeight = contentWidth / 592.28 * 841.89        let leftHeight = contentHeight        let position = 0        let imgWidth = 595.28        let imgHeight = 592.28 / contentWidth * contentHeight        let pageData = canvas.toDataURL(&apos;image/jpeg&apos;, 1.0)        let PDF = new JsPDF(&apos;&apos;, &apos;pt&apos;, &apos;a4&apos;)        if (leftHeight &lt; pageHeight) {          PDF.addImage(pageData, &apos;JPEG&apos;, 0, 0, imgWidth, imgHeight)        } else {          while (leftHeight &gt; 0) {            PDF.addImage(pageData, &apos;JPEG&apos;, 0, position, imgWidth, imgHeight)            leftHeight -= pageHeight            position -= 841.89            if (leftHeight &gt; 0) {              PDF.addPage()            }          }        }        PDF.save(title + &apos;.pdf&apos;)      }      )    }  }}</code></pre><p><img src="http://guaidonggua.cn/blog/image/20190420/b_02.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p><h1 id="三、main-js引入"><a href="#三、main-js引入" class="headerlink" title="三、main.js引入"></a>三、main.js引入</h1><pre><code>import htmlToPdf from &apos;./htmlToPdf&apos;;Vue.use(htmlToPdf);</code></pre><p><img src="http://guaidonggua.cn/blog/image/20190420/b_03.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p><h1 id="四、运用"><a href="#四、运用" class="headerlink" title="四、运用"></a>四、运用</h1><p><img src="http://guaidonggua.cn/blog/image/20190420/b_04.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p><h1 id="五、遇到问题"><a href="#五、遇到问题" class="headerlink" title="五、遇到问题"></a>五、遇到问题</h1><p><img src="http://guaidonggua.cn/blog/image/20190420/b_05.png" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>如图，在导出文件时，发现网络错误，可能是因为下载器不支持，首先换浏览器试一次，如果可以下载，则就是下载器不支持。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Vue</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>VUE打包后静态网页中图片路径出错</title>
+    <link href="undefined2019/04/20/VUE%E6%89%93%E5%8C%85%E5%90%8E%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5%E4%B8%AD%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84%E5%87%BA%E9%94%99/"/>
+    <url>2019/04/20/VUE%E6%89%93%E5%8C%85%E5%90%8E%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5%E4%B8%AD%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84%E5%87%BA%E9%94%99/</url>
+    
+    <content type="html"><![CDATA[<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>vue 项目在 npm run build 后打包成为静态网页，但是用浏览器打开时，发现有些图片展示不出来，再查看控制台，图片路径异常。这是因为打包后的静态网页使用图片时用的是相对路径，而不可以用绝对路径。<br><img src="http://guaidonggua.cn/blog/image/20190420/a_01.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p><h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><p>解决方案本人查看到两种，但它们都是修改配置，打包时使用相对路径。本人的问题是通过第二种方式解决的。</p><h2 id="第一种"><a href="#第一种" class="headerlink" title="第一种"></a>第一种</h2><p><img src="http://guaidonggua.cn/blog/image/20190420/a_02.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p><h2 id="第二种（已多次使用它解决）"><a href="#第二种（已多次使用它解决）" class="headerlink" title="第二种（已多次使用它解决）"></a>第二种（已多次使用它解决）</h2><p>![![在这里插入图片描述](<a href="http://guaidonggua.cn/blog/image/20190420/a_03.png" target="_blank" rel="noopener">http://guaidonggua.cn/blog/image/20190420/a_03.png</a>)</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Vue</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>微信公众号支付</title>
     <link href="undefined2019/01/09/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E6%94%AF%E4%BB%98/"/>
     <url>2019/01/09/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E6%94%AF%E4%BB%98/</url>
@@ -95,6 +133,46 @@
     <tags>
       
       <tag>微信</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Vue使用wx-sdk图片上传</title>
+    <link href="undefined2018/11/17/Vue%E4%BD%BF%E7%94%A8wx-sdk%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0/"/>
+    <url>2018/11/17/Vue%E4%BD%BF%E7%94%A8wx-sdk%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0/</url>
+    
+    <content type="html"><![CDATA[<p>此篇只讲述vue前台上传图片。<br>如果vue项目中还没有装weixin-js-sdk，先安装</p><pre><code>npm install weixin-js-sdk</code></pre><p>然后在页面中引入：</p><pre><code>import wx from &apos;weixin-js-sdk&apos;;</code></pre><h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><p><img src="http://guaidonggua.cn/blog/image/20181117/a_01.png" srcset="/img/loading.gif" alt="在这里插入图片描述"><br><strong>图片部分代码：</strong></p><pre><code>&lt;div class=&quot;photoBox&quot;&gt;       &lt;img v-for=&quot;url in imgUrls&quot; class=&quot;photo&quot; :src=&quot;url&quot; alt=&quot;&quot;&gt;       &lt;img class=&quot;photo&quot; src=&quot;../../img/photo/camera_02.png&quot; alt=&quot;&quot; @click=&quot;chooseWXImage()&quot;&gt;&lt;/div&gt;</code></pre><p><strong>参考data中定义了几个变量供使用</strong></p><pre><code>export default {  data() {    return {      // 接收本地图片id集      imgUrls: [],      // 返回的服务器id集      serverIds: [],      // 用于传参使用      jsconfig: {        aaurl: &quot;&quot;,  // 正在访问的前台url地址        token: &quot;&quot;   // 之前已经获取到的token      }    };  },}</code></pre><h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="一、首先：初始化wx接口配置"><a href="#一、首先：初始化wx接口配置" class="headerlink" title="一、首先：初始化wx接口配置"></a>一、首先：初始化wx接口配置</h2><p>正如上面定义的jsconfig中, 通过异步把 <strong>url地址</strong> 和 <strong>token</strong> 传给后台让后台做初始化，<strong>url地址</strong> 和 <strong>token</strong> 都上一步后台传过来的，或是其它获取渠道；<br>之后会传回来一些数据，也就是下面代码的 wx.config 中的 data.xx ,如果你的wx.config  中的 debug 是 true 开启调试模式的话，用微信访问初始化成功会返回如图：<br><img src="http://guaidonggua.cn/blog/image/20181117/a_02.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p><pre><code>this.postRequest(&quot;/weixin/initWXConfig&quot;, jsconfig).then(      response =&gt; {        let data = response.data.result;        wx.config({          debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。          appId: data.appId, // 必填，企业号的唯一标识，此处填写企业号corpid          timestamp: data.timestamp, // 必填，生成签名的时间戳          nonceStr: data.nonceStr, // 必填，生成签名的随机串          signature: data.signature, // 必填，签名，见附录1          jsApiList: [ // 必填，需要使用的JS接口列表，            &quot;chooseImage&quot;,   // 选择图片            &quot;uploadImage&quot;,   // 上传至微信服务器，会保存3天            &quot;downloadImage&quot;  // 下载图片          ]         });        wx.error(function (res) {          alert(res);        });      },      response =&gt; {        console.log(&quot;请求失败了!!!!&quot;);        alert(&quot;请求失败了!!!!&quot;);      }    );</code></pre><h2 id="二、单击相机图片，选择图片添加至图片序列"><a href="#二、单击相机图片，选择图片添加至图片序列" class="headerlink" title="二、单击相机图片，选择图片添加至图片序列"></a>二、单击相机图片，选择图片添加至图片序列</h2><p>单击后跳转到本地选择图片，也就是微信的添加图片，如果没有跳到，可能是初始错误，刚开始代码中的click对应以下 <strong>chooseWXImage()</strong> 方法：</p><pre><code>chooseWXImage() {    wx.chooseImage({      // 调用wx选择图片      count: 5, // 默认9, 我设置成5张，也可通过变量设置      sizeType: [&quot;original&quot;, &quot;compressed&quot;], // 可以指定是原图还是压缩图，默认二者都有      sourceType: [&quot;album&quot;, &quot;camera&quot;], // 可以指定来源是相册还是相机，默认二者都有      success: res =&gt; {        let localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片        localIds.forEach(li =&gt; {          this.imgUrls.push(li); // 示例中定义，的图片集合中接收到每个图片的src供页面展示        });      },      fail: err =&gt; {        alert(&quot;添加失败...&quot;);      }    });  }</code></pre><p><img src="http://guaidonggua.cn/blog/image/20181117/a_03.png" srcset="/img/loading.gif" alt="在这里插入图片描述"><br><img src="http://guaidonggua.cn/blog/image/20181117/a_04.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p><h2 id="完成上传"><a href="#完成上传" class="headerlink" title="完成上传"></a>完成上传</h2><p>单击完成创建，触发下面的 <strong>uploadWXImage()</strong> 方法，把图片上传到微信服务器，把返回来的serverIds通过异步传给后台，然后后台用此id到服务器上找到图片并下载到本地，或是其它操作<br><strong>此方法得到serverIds</strong><br>如图弹出返回数据则上传成功：<br><img src="http://guaidonggua.cn/blog/image/20181117/a_05.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p><pre><code>uploadWXImage() {    this.imgUrls.forEach(li =&gt; {  // 循环刚才的本地url一张张上传      wx.uploadImage({  // 调用微信上传图片        localId: li, // 需要上传的图片的本地ID，由chooseImage接口获得        isShowProgressTips: 1, // 默认为1，显示进度提示        success: res =&gt; {          let serverId = res.serverId;          this.serverIds[0]=serverId;  // 给data中定义的数组添加值，把它传到后台        },        fail: err =&gt; {          alert(&quot;创建失败...&quot;);        }      });    });  }</code></pre><p><strong>异步传serverIds省略</strong>。<br>到此上传图片完毕。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Vue</tag>
+      
+      <tag>微信</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Windows-RabbitMQ安装、配置</title>
+    <link href="undefined2018/11/07/Windows-RabbitMQ%E5%AE%89%E8%A3%85%E3%80%81%E9%85%8D%E7%BD%AE/"/>
+    <url>2018/11/07/Windows-RabbitMQ%E5%AE%89%E8%A3%85%E3%80%81%E9%85%8D%E7%BD%AE/</url>
+    
+    <content type="html"><![CDATA[<p>RebbitMQ消息队列（Message Queue，简称MQ）是企业级互联网架构的核心产品，服务于整个阿里巴巴集团已超过 13 年，经过阿里巴巴交易核心链路反复打磨与历年双十一购物狂欢节的严苛考验，是一个真正具备低延迟、高并发、高可用、高可靠，可支撑万亿级数据洪峰的分布式消息中间件。<br>更多：<a href="https://baike.baidu.com/item/rabbitmq/9372144?fr=aladdin" target="_blank" rel="noopener">百度百科</a></p><h1 id="一、安装"><a href="#一、安装" class="headerlink" title="一、安装"></a>一、安装</h1><h2 id="1-首先安装Erlang"><a href="#1-首先安装Erlang" class="headerlink" title="1.首先安装Erlang"></a>1.首先安装Erlang</h2><p>RabbitMQ是一个在AMQP协议标准基础上完整的，可服用的企业消息系统。它遵循Mozilla Public License开源协议，采用 Erlang 实现的工业级的消息队列(MQ)服务器，Rabbit MQ 是建立在Erlang OTP平台上。所以可以先到<a href="http://www.erlang.org/downloads" target="_blank" rel="noopener">官网</a>下载安装erlang，全部按指示下一步即可。<br>或是其它下载安装方式，需要配置环境变量，查一下也好，没有则加上：<br>如图：ERLANG_HOME  ：F:\erl7.1(对应自己目录)<br><img src="http://guaidonggua.cn/blog/image/20181107/a_01.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p><h2 id="2-安装RabbitMQ"><a href="#2-安装RabbitMQ" class="headerlink" title="2.安装RabbitMQ"></a>2.安装RabbitMQ</h2><p><a href="http://www.rabbitmq.com/download.html" target="_blank" rel="noopener">官网</a>或其它方式下载安装RabbitMQ</p><h2 id="3-配置"><a href="#3-配置" class="headerlink" title="3.配置"></a>3.配置</h2><ol><li>管理员方式打开cmd窗口</li></ol><p><img src="http://guaidonggua.cn/blog/image/20181107/a_02.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p><p> <strong>a. 根据自己目录输入命令</strong></p><pre><code>我的已经配置过，所以返回信息可能不一样，不报错即可&quot;F:\javaInstall\rabbit\rabbitmq\rabbitmq_server-3.6.5\sbin\rabbitmq-plugins.bat&quot; enable rabbitmq_management不用运行下面这行   Plugin configuration unchanged.</code></pre><p><img src="http://guaidonggua.cn/blog/image/20181107/a_03.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p><p> <strong>b. 创建用户给于权限</strong><br>注意进入安装文件的sbin目录下操作</p><pre><code>首先查看当前用户：`rabbitmqctl.bat list_users`</code></pre><p><img src="http://guaidonggua.cn/blog/image/20181107/a_04.png" srcset="/img/loading.gif" alt="在这里插入图片描述"><strong>根据自己需求操作以下：</strong></p><pre><code>新增一个用户：`rabbitmqctl.bat add_user username password`   //username password是自定义的用户名和秘码</code></pre><p><img src="http://guaidonggua.cn/blog/image/20181107/a_05.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p><pre><code>发现新建用户【】中是空的，这是因为你没有给他分配角色，然后现有五个角色供你分配：     (1) 超级管理员(administrator)    可登陆管理控制台(启用management plugin的情况下)，可查看所有的信息，并且可以对用户，策略(policy)进行操作。     (2) 监控者(monitoring)    可登陆管理控制台(启用management plugin的情况下)，同时可以查看rabbitmq节点的相关信息(进程数，内存使用情况，磁盘使用情况等)      (3) 策略制定者(policymaker)    可登陆管理控制台(启用management plugin的情况下), 同时可以对policy进行管理。     (4) 普通管理者(management)    仅可登陆管理控制台(启用management plugin的情况下)，无法看到节点信息，也无法对策略进行管理。     (5) 其他的    无法登陆管理控制台，通常就是普通的生产者和消费者。    给他分配超级管理员        执行：rabbitmqctl.bat set_user_tags username administrator</code></pre><p><img src="http://guaidonggua.cn/blog/image/20181107/a_06.png" srcset="/img/loading.gif" alt="在这里插入图片描述"><strong>其它操作：</strong></p><pre><code>修改密码：rabbitmqctl 原密码 userName 新密码`删除用户：rabbitmqctl.bat delete_user 用户名</code></pre><h2 id="4-登录"><a href="#4-登录" class="headerlink" title="4.登录"></a>4.登录</h2><p>web打开： <a href="http://localhost:15672/" target="_blank" rel="noopener">http://localhost:15672/</a><br>如果打不开参考： 或许是你没有执行第一步打开web权限，再执行一遍</p><pre><code>rabbitmq-plugins enable rabbitmq_management</code></pre><p>如果还未解决参考： <a href="https://blog.csdn.net/sxf359/article/details/78239382" target="_blank" rel="noopener">https://blog.csdn.net/sxf359/article/details/78239382</a><br>登录进去如下：<br><img src="http://guaidonggua.cn/blog/image/20181107/a_07.png" srcset="/img/loading.gif" alt="在这里插入图片描述"><br><a href="https://www.cnblogs.com/ericli-ericli/p/5902270.html" target="_blank" rel="noopener">https://www.cnblogs.com/ericli-ericli/p/5902270.html</a></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>RabbitMQ</tag>
       
     </tags>
     

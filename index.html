@@ -308,6 +308,95 @@
     
     
       <div class="col-12 col-md-4 m-auto">
+        <a href="/2019/04/20/Vue-网页生成-PDF/" target="_self">
+          <img src="http://guaidonggua.cn/blog/image/20190420/sl_02.jpg" srcset="/img/loading.gif" alt="Vue 网页生成 PDF" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/04/20/Vue-网页生成-PDF/">
+        <p class="h4 index-header">Vue 网页生成 PDF</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">保存当前网页为PDF格式到本地一、安装依赖1. npm install --save html2canvas  // 作用是html转图片
+2. npm install jspdf --save  // 再将图片转为pdf
+二、设置格式函数import html2Canvas from &apos;html2canvas&apos;
+import JsPDF from &apos;jspdf&apos;
+
+export default{
+  install (Vue, options) {
+    Vue.prototype.getPdf = function (title) {
+      html2Canvas(document.querySelector(&apos;#pdfDom&apos;), {
+        allowTaint: true
+      }).then(function (canvas) {
+        let contentWidth = canvas.width
+        let contentHeight = canvas.height
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-04-20&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Vue">Vue</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2019/04/20/VUE打包后静态网页中图片路径出错/" target="_self">
+          <img src="http://guaidonggua.cn/blog/image/20190420/sl_01.jpg" srcset="/img/loading.gif" alt="VUE打包后静态网页中图片路径出错" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/04/20/VUE打包后静态网页中图片路径出错/">
+        <p class="h4 index-header">VUE打包后静态网页中图片路径出错</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">问题vue 项目在 npm run build 后打包成为静态网页，但是用浏览器打开时，发现有些图片展示不出来，再查看控制台，图片路径异常。这是因为打包后的静态网页使用图片时用的是相对路径，而不可以用绝对路径。
+解决方案解决方案本人查看到两种，但它们都是修改配置，打包时使用相对路径。本人的问题是通过第二种方式解决的。
+第一种
+第二种（已多次使用它解决）![![在这里插入图片描述](http://guaidonggua.cn/blog/image/20190420/a_03.png)
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-04-20&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Vue">Vue</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
         <a href="/2019/01/09/微信公众号支付/" target="_self">
           <img src="/image/sl_wxzf.jpg" srcset="/img/loading.gif" alt="微信公众号支付" class="img-fluid rounded z-depth-3 index-thumbnails">
         </a>
@@ -345,6 +434,99 @@ onBridgeReady() {
           <i class="iconfont icon-tag"></i>
           
             <a href="/tags/%E5%BE%AE%E4%BF%A1">微信</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2018/11/17/Vue使用wx-sdk图片上传/" target="_self">
+          <img src="http://guaidonggua.cn/blog/image/20181117/sl_01.jpg" srcset="/img/loading.gif" alt="Vue使用wx-sdk图片上传" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2018/11/17/Vue使用wx-sdk图片上传/">
+        <p class="h4 index-header">Vue使用wx-sdk图片上传</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">此篇只讲述vue前台上传图片。如果vue项目中还没有装weixin-js-sdk，先安装
+npm install weixin-js-sdk然后在页面中引入：
+import wx from &apos;weixin-js-sdk&apos;;示例图片部分代码：
+&lt;div class=&quot;photoBox&quot;&gt;
+       &lt;img v-for=&quot;url in imgUrls&quot; class=&quot;photo&quot; :src=&quot;url&quot; alt=&quot;&quot;&gt;
+       &lt;img class=&quot;photo&quot; src=&quot;../../img/photo/camera_02.png&quot; alt=&quot;&quot; @click=&quot;chooseWXImage()&quot;&gt;
+&lt;/div&gt;参考data中定义了几个变量供使用
+export default {
+  data() {
+    return {
+    </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2018-11-17&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Vue">Vue</a>&nbsp;
+          
+            <a href="/tags/%E5%BE%AE%E4%BF%A1">微信</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2018/11/07/Windows-RabbitMQ安装、配置/" target="_self">
+          <img src="http://guaidonggua.cn/blog/image/20181107/sl_01.jpg" srcset="/img/loading.gif" alt="Windows-RabbitMQ安装、配置" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2018/11/07/Windows-RabbitMQ安装、配置/">
+        <p class="h4 index-header">Windows-RabbitMQ安装、配置</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">RebbitMQ消息队列（Message Queue，简称MQ）是企业级互联网架构的核心产品，服务于整个阿里巴巴集团已超过 13 年，经过阿里巴巴交易核心链路反复打磨与历年双十一购物狂欢节的严苛考验，是一个真正具备低延迟、高并发、高可用、高可靠，可支撑万亿级数据洪峰的分布式消息中间件。更多：百度百科
+一、安装1.首先安装ErlangRabbitMQ是一个在AMQP协议标准基础上完整的，可服用的企业消息系统。它遵循Mozilla Public License开源协议，采用 Erlang 实现的工业级的消息队列(MQ)服务器，Rabbit MQ 是建立在Erlang OTP平台上。所以可以先到官网下载安装erlang，全部按指示下一步即可。或是其它下载安装方式，需要配置环境变量，查一下也好，没有则加上：如图：ERLANG_HOME  ：F:\erl7.1(对应自己目录)
+2.安装RabbitMQ官网或其它方式下载安装RabbitMQ
+3.配置
+管理员方式打开cmd窗口
+
+
+ a. 根据自己目录输入命令
+我的已经配置过，所以返回信息可能不一样，不报错即可
+&quot;F:\javaInsta</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2018-11-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/RabbitMQ">RabbitMQ</a>&nbsp;
           
         
       </div>

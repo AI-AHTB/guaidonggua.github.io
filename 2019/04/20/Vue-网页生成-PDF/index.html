@@ -14,7 +14,7 @@
   <meta name="description" content>
   <meta name="author" content="怪東瓜">
   <meta name="keywords" content>
-  <title>Archive | GuaiDongGua · 怪東瓜</title>
+  <title>Vue 网页生成 PDF | GuaiDongGua · 怪東瓜</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
@@ -35,7 +35,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -105,7 +105,7 @@
 </nav>
 
     <div class="view intro-2" id="background"
-         style="background: url('/img/banner_02.jpg')no-repeat center center;
+         style="background: url('/img/banner_01.jpg')no-repeat center center;
            background-size: cover;
            background-attachment: fixed;">
       <div class="full-bg-img">
@@ -115,6 +115,41 @@
               
             </span>
 
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  Saturday, April 20th 2019, 1:39 pm
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    251 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      1 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
             
           </div>
 
@@ -126,53 +161,107 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5 z-depth-3" id="board">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">9 posts in total.</p>
-  <hr>
-  
-    
       
-      <p class="h5">2019</p>
-    
-    <a href="/2019/10/27/SpringBoot-MyBatis-MySQL多数据源搭建/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">SpringBoot+MyBatis+MySQL多数据源搭建</span>
-      <span style="float: right;">10-27</span>
-    </a>
-  
-    
-    <a href="/2019/10/24/SpringBoot中generator整合lombox-中文注释/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">SpringBoot中generator整合lombox+中文注释</span>
-      <span style="float: right;">10-24</span>
-    </a>
-  
-    
-    <a href="/2019/10/16/一道简单的面试题/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">一道简单的面试题</span>
-      <span style="float: right;">10-16</span>
-    </a>
-  
-    
-    <a href="/2019/10/07/自我控制是最强者的本能/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">自我控制是最强者的本能</span>
-      <span style="float: right;">10-07</span>
-    </a>
-  
-</div>
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h1 id="保存当前网页为PDF格式到本地"><a href="#保存当前网页为PDF格式到本地" class="headerlink" title="保存当前网页为PDF格式到本地"></a>保存当前网页为PDF格式到本地</h1><h1 id="一、安装依赖"><a href="#一、安装依赖" class="headerlink" title="一、安装依赖"></a>一、安装依赖</h1><pre><code>1. npm install --save html2canvas  // 作用是html转图片
+2. npm install jspdf --save  // 再将图片转为pdf</code></pre><p><img src="http://guaidonggua.cn/blog/image/20190420/b_01.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h1 id="二、设置格式函数"><a href="#二、设置格式函数" class="headerlink" title="二、设置格式函数"></a>二、设置格式函数</h1><pre><code>import html2Canvas from &apos;html2canvas&apos;
+import JsPDF from &apos;jspdf&apos;
 
-              </div>
-            </div>
+export default{
+  install (Vue, options) {
+    Vue.prototype.getPdf = function (title) {
+      html2Canvas(document.querySelector(&apos;#pdfDom&apos;), {
+        allowTaint: true
+      }).then(function (canvas) {
+        let contentWidth = canvas.width
+        let contentHeight = canvas.height
+        let pageHeight = contentWidth / 592.28 * 841.89
+        let leftHeight = contentHeight
+        let position = 0
+        let imgWidth = 595.28
+        let imgHeight = 592.28 / contentWidth * contentHeight
+        let pageData = canvas.toDataURL(&apos;image/jpeg&apos;, 1.0)
+        let PDF = new JsPDF(&apos;&apos;, &apos;pt&apos;, &apos;a4&apos;)
+        if (leftHeight &lt; pageHeight) {
+          PDF.addImage(pageData, &apos;JPEG&apos;, 0, 0, imgWidth, imgHeight)
+        } else {
+          while (leftHeight &gt; 0) {
+            PDF.addImage(pageData, &apos;JPEG&apos;, 0, position, imgWidth, imgHeight)
+            leftHeight -= pageHeight
+            position -= 841.89
+            if (leftHeight &gt; 0) {
+              PDF.addPage()
+            }
+          }
+        }
+        PDF.save(title + &apos;.pdf&apos;)
+      }
+      )
+    }
+  }
+}</code></pre><p><img src="http://guaidonggua.cn/blog/image/20190420/b_02.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h1 id="三、main-js引入"><a href="#三、main-js引入" class="headerlink" title="三、main.js引入"></a>三、main.js引入</h1><pre><code>import htmlToPdf from &apos;./htmlToPdf&apos;;
+
+Vue.use(htmlToPdf);</code></pre><p><img src="http://guaidonggua.cn/blog/image/20190420/b_03.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h1 id="四、运用"><a href="#四、运用" class="headerlink" title="四、运用"></a>四、运用</h1><p><img src="http://guaidonggua.cn/blog/image/20190420/b_04.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h1 id="五、遇到问题"><a href="#五、遇到问题" class="headerlink" title="五、遇到问题"></a>五、遇到问题</h1><p><img src="http://guaidonggua.cn/blog/image/20190420/b_05.png" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>如图，在导出文件时，发现网络错误，可能是因为下载器不支持，首先换浏览器试一次，如果可以下载，则就是下载器不支持。</p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/Vue">Vue</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
           </div>
         </div>
       </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
+    
+  </div>
+</div>
+
     
   </main>
 
@@ -247,6 +336,11 @@
 
 
 
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
 
 
   <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
@@ -287,7 +381,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Archive&nbsp;",
+        "Vue 网页生成 PDF&nbsp;",
       ],
       cursorChar: "|",
       typeSpeed: 70,
