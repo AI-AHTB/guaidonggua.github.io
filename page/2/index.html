@@ -14,7 +14,7 @@
   <meta name="description" content>
   <meta name="author" content="怪東瓜">
   <meta name="keywords" content>
-  <title>Archive | GuaiDongGua · 怪東瓜</title>
+  <title>GuaiDongGua · 怪東瓜</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
@@ -35,7 +35,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 100vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -105,7 +105,7 @@
 </nav>
 
     <div class="view intro-2" id="background"
-         style="background: url('/img/banner_02.jpg')no-repeat center center;
+         style="background: url('/img/banner_00.jpg')no-repeat center center;
            background-size: cover;
            background-attachment: fixed;">
       <div class="full-bg-img">
@@ -118,6 +118,10 @@
             
           </div>
 
+          
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
           
         </div>
       </div>
@@ -134,26 +138,66 @@
               <div class="col-12 col-md-10 m-auto">
                 
 
-<div class="list-group">
-  <p class="h4">11 posts in total.</p>
-  <hr>
-  
+
+  <div class="row mb-4 mx-auto">
     
-      
-      <p class="h5">2018</p>
     
-    <a href="/2018/11/17/Vue使用wx-sdk图片上传/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Vue使用wx-sdk图片上传</span>
-      <span style="float: right;">11-17</span>
-    </a>
-  
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2018/11/07/Windows-RabbitMQ安装、配置/" target="_self">
+          <img src="http://guaidonggua.cn/blog/image/20181107/sl_01.jpg" srcset="/img/loading.gif" alt="Windows-RabbitMQ安装、配置" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
     
-    <a href="/2018/11/07/Windows-RabbitMQ安装、配置/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Windows-RabbitMQ安装、配置</span>
-      <span style="float: right;">11-07</span>
-    </a>
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2018/11/07/Windows-RabbitMQ安装、配置/">
+        <p class="h4 index-header">Windows-RabbitMQ安装、配置</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">RebbitMQ消息队列（Message Queue，简称MQ）是企业级互联网架构的核心产品，服务于整个阿里巴巴集团已超过 13 年，经过阿里巴巴交易核心链路反复打磨与历年双十一购物狂欢节的严苛考验，是一个真正具备低延迟、高并发、高可用、高可靠，可支撑万亿级数据洪峰的分布式消息中间件。更多：百度百科
+一、安装1.首先安装ErlangRabbitMQ是一个在AMQP协议标准基础上完整的，可服用的企业消息系统。它遵循Mozilla Public License开源协议，采用 Erlang 实现的工业级的消息队列(MQ)服务器，Rabbit MQ 是建立在Erlang OTP平台上。所以可以先到官网下载安装erlang，全部按指示下一步即可。或是其它下载安装方式，需要配置环境变量，查一下也好，没有则加上：如图：ERLANG_HOME  ：F:\erl7.1(对应自己目录)
+2.安装RabbitMQ官网或其它方式下载安装RabbitMQ
+3.配置
+管理员方式打开cmd窗口
+
+
+ a. 根据自己目录输入命令
+我的已经配置过，所以返回信息可能不一样，不报错即可
+&quot;F:\javaInsta</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2018-11-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/RabbitMQ">RabbitMQ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <nav aria-label="index posts navigation">
+    <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
+      <a class="extend prev" rel="prev" href="/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    </span>
+  </nav>
   
-</div>
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByClassName("page-number")) {
+      ele.href += '#board';
+    }
+  </script>
+
 
 
               </div>
@@ -275,7 +319,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Archive&nbsp;",
+        "自我控制是最强者的本能&nbsp;",
       ],
       cursorChar: "|",
       typeSpeed: 70,
