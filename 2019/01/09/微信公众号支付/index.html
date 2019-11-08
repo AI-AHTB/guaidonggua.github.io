@@ -8,7 +8,7 @@
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
   <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
-  <link rel="icon" type="image/png" href="http://guaidonggua.cn/blog/image/themes/logo.png">
+  <link rel="icon" type="image/png" href="https://guaidonggua.cn/blog/image/themes/logo.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="description" content>
@@ -105,7 +105,7 @@
 </nav>
 
     <div class="view intro-2" id="background"
-         style="background: url('http://guaidonggua.cn/blog/image/themes/banner_01.jpg')no-repeat center center;
+         style="background: url('https://guaidonggua.cn/blog/image/themes/banner_01.jpg')no-repeat center center;
            background-size: cover;
            background-attachment: fixed;">
       <div class="full-bg-img">
@@ -173,11 +173,11 @@
             <p>历经三天的爬坑之路，一套完整的 JAVA 版 JSAPI 微信支付和大家分享。</p>
 <p>首先看官方文档，其中虽有一点点小差错，但还是很重要，毕竟它是根。<br><a href="https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=1_1" target="_blank" rel="noopener">https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=1_1</a></p>
 <h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><p>公众号配置和申请商户申请省略，直接上功能</p>
-<h2 id="一、首先下载官方提供的工具类demo"><a href="#一、首先下载官方提供的工具类demo" class="headerlink" title="一、首先下载官方提供的工具类demo"></a>一、首先下载官方提供的工具类demo</h2><p><img src="/image/20190109/a_01.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
-<h2 id="二、把这些工具类Copy到自己的项目中"><a href="#二、把这些工具类Copy到自己的项目中" class="headerlink" title="二、把这些工具类Copy到自己的项目中"></a>二、把这些工具类Copy到自己的项目中</h2><p><img src="/image/20190109/a_02.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
-<p><img src="/image/20190109/a_03.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h2 id="一、首先下载官方提供的工具类demo"><a href="#一、首先下载官方提供的工具类demo" class="headerlink" title="一、首先下载官方提供的工具类demo"></a>一、首先下载官方提供的工具类demo</h2><p><img src="https://guaidonggua.cn/blog/image/20190109/a_01.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h2 id="二、把这些工具类Copy到自己的项目中"><a href="#二、把这些工具类Copy到自己的项目中" class="headerlink" title="二、把这些工具类Copy到自己的项目中"></a>二、把这些工具类Copy到自己的项目中</h2><p><img src="https://guaidonggua.cn/blog/image/20190109/a_02.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<p><img src="https://guaidonggua.cn/blog/image/20190109/a_03.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
 <h1 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h1><p> 统一下单 —》 H5调起微信支付 —》 回调参数<br> 场景案例：充值话费流量</p>
-<p><img src="/image/20190109/a_04.png" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>场景介绍：<br>    1）点击套餐时，统一下单；<br>    2）下单完成后返回参数给H5页面做为调用微信支付页面的数据；<br>    3）然后跳转到你的微信支付界面(输入密码界面)；<br>    4）输入密码支付成功；<br>    5）回调信息用做通知。</p>
+<p><img src="https://guaidonggua.cn/blog/image/20190109/a_04.png" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>场景介绍：<br>    1）点击套餐时，统一下单；<br>    2）下单完成后返回参数给H5页面做为调用微信支付页面的数据；<br>    3）然后跳转到你的微信支付界面(输入密码界面)；<br>    4）输入密码支付成功；<br>    5）回调信息用做通知。</p>
 <h1 id="一、前台"><a href="#一、前台" class="headerlink" title="一、前台"></a>一、前台</h1><pre><code>// 跳转微信支付(单击套餐时)
 onBridgeReady() {
     // 【1】首先调用后台，统一下单 【对应后台下单方法，在后文有定义】
@@ -330,7 +330,7 @@ public class MyConfig extends WXPayConfig{
          e.printStackTrace();
      }
      return resp;
- }</code></pre><p>下单成功后返回的信息，前台取到需要的参数<img src="/image/20190109/a_05.png" srcset="/img/loading.gif" alt="下单成功返回数据"></p>
+ }</code></pre><p>下单成功后返回的信息，前台取到需要的参数<img src="https://guaidonggua.cn/blog/image/20190109/a_05.png" srcset="/img/loading.gif" alt="下单成功返回数据"></p>
 <h2 id="2-H5调用微信端支付"><a href="#2-H5调用微信端支付" class="headerlink" title="2.H5调用微信端支付"></a>2.H5调用微信端支付</h2><p>其中参数犹为重要，所以这里在后台生成，同时参考官方参数列表<br><a href="https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=7_7&amp;index=6" target="_blank" rel="noopener">https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=7_7&amp;index=6</a></p>
 <pre><code>/**
  * H5支付时需要的参数
@@ -353,9 +353,9 @@ public DataRow goH5Pay(DataRow data) throws Exception {
     }
 
     return param;
-}</code></pre><p><img src="/image/20190109/a_06.png" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>在添加参数后调用微信支付，如果正常跳到微信支付，则跳过此处。<br>如果有异常，不能跳转微信支付页面，即官方给的返回为，前台可以用 alert() 输出JSON格式查看错误信息<br>get_brand_wcpay_request:fail —— 支付失败</p>
-<h5 id="异常两种情况：如下"><a href="#异常两种情况：如下" class="headerlink" title="异常两种情况：如下"></a>异常两种情况：如下</h5><p><img src="/image/20190109/a_07.png" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>出现图 a：<br>（1）首先对照自己参数是否真的有问题，主要是签名，使用微信平台测试工具<br>         <a href="https://pay.weixin.qq.com/wiki/tools/signverify/" target="_blank" rel="noopener">https://pay.weixin.qq.com/wiki/tools/signverify/</a><br>（2）自己生成的签名和官方的明明一样，还是报签名错误，此时做以下修改工具代码<br><img src="/image/20190109/a_08.png" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>出现图b：<br>是商户平台上，你当前的H5页面的URL支付目录未授权，所以配置，如下图<br><img src="/image/20190109/a_09.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
-<h2 id="如果微信跳转成功如下"><a href="#如果微信跳转成功如下" class="headerlink" title="如果微信跳转成功如下"></a>如果微信跳转成功如下</h2><p><img src="/image/20190109/a_10.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+}</code></pre><p><img src="https://guaidonggua.cn/blog/image/20190109/a_06.png" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>在添加参数后调用微信支付，如果正常跳到微信支付，则跳过此处。<br>如果有异常，不能跳转微信支付页面，即官方给的返回为，前台可以用 alert() 输出JSON格式查看错误信息<br>get_brand_wcpay_request:fail —— 支付失败</p>
+<h5 id="异常两种情况：如下"><a href="#异常两种情况：如下" class="headerlink" title="异常两种情况：如下"></a>异常两种情况：如下</h5><p><img src="https://guaidonggua.cn/blog/image/20190109/a_07.png" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>出现图 a：<br>（1）首先对照自己参数是否真的有问题，主要是签名，使用微信平台测试工具<br>         <a href="https://pay.weixin.qq.com/wiki/tools/signverify/" target="_blank" rel="noopener">https://pay.weixin.qq.com/wiki/tools/signverify/</a><br>（2）自己生成的签名和官方的明明一样，还是报签名错误，此时做以下修改工具代码<br><img src="https://guaidonggua.cn/blog/image/20190109/a_08.png" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>出现图b：<br>是商户平台上，你当前的H5页面的URL支付目录未授权，所以配置，如下图<br><img src="https://guaidonggua.cn/blog/image/20190109/a_09.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h2 id="如果微信跳转成功如下"><a href="#如果微信跳转成功如下" class="headerlink" title="如果微信跳转成功如下"></a>如果微信跳转成功如下</h2><p><img src="https://guaidonggua.cn/blog/image/20190109/a_10.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
 <h2 id="3-支付完成会通知，下单时设置的通知路由"><a href="#3-支付完成会通知，下单时设置的通知路由" class="headerlink" title="3.支付完成会通知，下单时设置的通知路由"></a>3.支付完成会通知，下单时设置的通知路由</h2><p>这里通知路由查询订单，如下</p>
 <pre><code>/**
   * 支付成功回調,查询订单信息
@@ -385,7 +385,7 @@ public DataRow goH5Pay(DataRow data) throws Exception {
 
      }
      return ResultUtil.resultJsonString(&quot;null&quot;);
- }</code></pre><p><img src="/image/20190109/a_11.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+ }</code></pre><p><img src="https://guaidonggua.cn/blog/image/20190109/a_11.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
 <h2 id="其它方法退款查询、下账单查询，与上图账单查询道理相同"><a href="#其它方法退款查询、下账单查询，与上图账单查询道理相同" class="headerlink" title="其它方法退款查询、下账单查询，与上图账单查询道理相同"></a>其它方法退款查询、下账单查询，与上图账单查询道理相同</h2><p>至此，微信支付完成，如有不对之处，希望读者评论提醒</p>
 
             <hr>
