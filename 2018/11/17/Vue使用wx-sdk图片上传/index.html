@@ -172,7 +172,7 @@
           <div class="markdown-body">
             <p>此篇只讲述vue前台上传图片。<br>如果vue项目中还没有装weixin-js-sdk，先安装</p>
 <pre><code>npm install weixin-js-sdk</code></pre><p>然后在页面中引入：</p>
-<pre><code>import wx from &apos;weixin-js-sdk&apos;;</code></pre><h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><p><img src="https://guaidonggua.cn/blog/image/20181117/a_01.png" srcset="/img/loading.gif" alt="在这里插入图片描述"><br><strong>图片部分代码：</strong></p>
+<pre><code>import wx from &apos;weixin-js-sdk&apos;;</code></pre><h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><p><img src="https://gitee.com/guaidonggua/image/raw/master/20181117/a_01.png" srcset="/img/loading.gif" alt="在这里插入图片描述"><br><strong>图片部分代码：</strong></p>
 <pre><code>&lt;div class=&quot;photoBox&quot;&gt;
        &lt;img v-for=&quot;url in imgUrls&quot; class=&quot;photo&quot; :src=&quot;url&quot; alt=&quot;&quot;&gt;
        &lt;img class=&quot;photo&quot; src=&quot;../../img/photo/camera_02.png&quot; alt=&quot;&quot; @click=&quot;chooseWXImage()&quot;&gt;
@@ -191,7 +191,7 @@
       }
     };
   },
-}</code></pre><h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="一、首先：初始化wx接口配置"><a href="#一、首先：初始化wx接口配置" class="headerlink" title="一、首先：初始化wx接口配置"></a>一、首先：初始化wx接口配置</h2><p>正如上面定义的jsconfig中, 通过异步把 <strong>url地址</strong> 和 <strong>token</strong> 传给后台让后台做初始化，<strong>url地址</strong> 和 <strong>token</strong> 都上一步后台传过来的，或是其它获取渠道；<br>之后会传回来一些数据，也就是下面代码的 wx.config 中的 data.xx ,如果你的wx.config  中的 debug 是 true 开启调试模式的话，用微信访问初始化成功会返回如图：<br><img src="https://guaidonggua.cn/blog/image/20181117/a_02.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+}</code></pre><h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="一、首先：初始化wx接口配置"><a href="#一、首先：初始化wx接口配置" class="headerlink" title="一、首先：初始化wx接口配置"></a>一、首先：初始化wx接口配置</h2><p>正如上面定义的jsconfig中, 通过异步把 <strong>url地址</strong> 和 <strong>token</strong> 传给后台让后台做初始化，<strong>url地址</strong> 和 <strong>token</strong> 都上一步后台传过来的，或是其它获取渠道；<br>之后会传回来一些数据，也就是下面代码的 wx.config 中的 data.xx ,如果你的wx.config  中的 debug 是 true 开启调试模式的话，用微信访问初始化成功会返回如图：<br><img src="https://gitee.com/guaidonggua/image/raw/master/20181117/a_02.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
 <pre><code>this.postRequest(&quot;/weixin/initWXConfig&quot;, jsconfig).then(
       response =&gt; {
         let data = response.data.result;
@@ -232,8 +232,8 @@
         alert(&quot;添加失败...&quot;);
       }
     });
-  }</code></pre><p><img src="https://guaidonggua.cn/blog/image/20181117/a_03.png" srcset="/img/loading.gif" alt="在这里插入图片描述"><br><img src="https://guaidonggua.cn/blog/image/20181117/a_04.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
-<h2 id="完成上传"><a href="#完成上传" class="headerlink" title="完成上传"></a>完成上传</h2><p>单击完成创建，触发下面的 <strong>uploadWXImage()</strong> 方法，把图片上传到微信服务器，把返回来的serverIds通过异步传给后台，然后后台用此id到服务器上找到图片并下载到本地，或是其它操作<br><strong>此方法得到serverIds</strong><br>如图弹出返回数据则上传成功：<br><img src="https://guaidonggua.cn/blog/image/20181117/a_05.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+  }</code></pre><p><img src="https://gitee.com/guaidonggua/image/raw/master/20181117/a_03.png" srcset="/img/loading.gif" alt="在这里插入图片描述"><br><img src="https://gitee.com/guaidonggua/image/raw/master/20181117/a_04.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h2 id="完成上传"><a href="#完成上传" class="headerlink" title="完成上传"></a>完成上传</h2><p>单击完成创建，触发下面的 <strong>uploadWXImage()</strong> 方法，把图片上传到微信服务器，把返回来的serverIds通过异步传给后台，然后后台用此id到服务器上找到图片并下载到本地，或是其它操作<br><strong>此方法得到serverIds</strong><br>如图弹出返回数据则上传成功：<br><img src="https://gitee.com/guaidonggua/image/raw/master/20181117/a_05.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
 <pre><code>uploadWXImage() {
     this.imgUrls.forEach(li =&gt; {  // 循环刚才的本地url一张张上传
       wx.uploadImage({  // 调用微信上传图片
